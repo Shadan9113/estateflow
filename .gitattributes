@@ -1,0 +1,23 @@
+# Auto detect text files
+* text=auto
+
+# C#
+*.cs text
+
+# JSON
+*.json text
+
+# React
+*.ts text
+*.tsx text
+*.js text
+*.jsx text
+*.css text
+*.scss text
+*.html text
+
+# Images
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
