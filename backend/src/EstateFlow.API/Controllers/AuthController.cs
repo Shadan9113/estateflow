@@ -1,5 +1,6 @@
 using EstateFlow.Application.DTOs.Auth;
 using EstateFlow.Application.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EstateFlow.API.Controllers;
@@ -30,5 +31,18 @@ public class AuthController : ControllerBase
             );
         }
         return Ok(result);
+    }
+
+    [Authorize]
+    [HttpGet("me")]
+    public async Task<IActionResult> Me([FromServices] ICurrentUserService currentUserService)
+    {
+        return Ok(new
+        {
+            UserId = currentUserService.GetUserId(),
+            Name = currentUserService.GetFullName(),
+            Email = currentUserService.GetEmail(),
+            Role = currentUserService.GetRole()
+        });
     }
 }

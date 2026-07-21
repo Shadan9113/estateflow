@@ -31,6 +31,7 @@ public class AuthService : IAuthService
         
         var token = _jwtService.GenerateToken(
             user.Id,
+            user.FullName,
             user.Email,
             user.Role
         );
