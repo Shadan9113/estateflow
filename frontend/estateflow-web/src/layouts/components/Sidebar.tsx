@@ -18,14 +18,14 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Icons } from "../../assets/icons/icons";
 import { useNavigate } from "react-router-dom";
-import { storage } from "../../utils/storage";
+import { authService } from "../../features/auth/services/auth.service";
 
 const Sidebar = () => {
 
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    storage.clearAuth()
+    authService.logout();
     navigate("/login",{replace:true})
   }
 
