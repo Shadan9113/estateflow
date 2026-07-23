@@ -1,0 +1,25 @@
+import { Route, Routes } from "react-router-dom";
+import LoginPage from "../features/auth/pages/LoginPage";
+import { DashboardLayout } from "../layouts/DashboardLayout";
+import { DashboardPage } from "../features/dashboard/pages/DashboardPage";
+import ProtectedRoute from "./ProtectedRoute";
+
+const AppRoutes = () => {
+  return (
+    <Routes>
+      <Route path="/login" element={<LoginPage />} />
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+          <DashboardLayout>
+            <DashboardPage />
+          </DashboardLayout>
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
+  );
+};
+
+export default AppRoutes;
